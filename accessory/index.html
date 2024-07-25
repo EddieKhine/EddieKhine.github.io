@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Car Accessories</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%; 
+        }
+    
+        th,
+        td {
+          text-align: left;
+          padding: 8px;
+        }
+    
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+    
+        th {
+          background-color: brown;
+          color: #f2f2f2;
+        }
+        
+
+      </style>
+</head>
+
+<body>
+    <h1>Car Accessories</h1>
+
+    <form id="accessoryForm">
+        <label for="accessory">Select an accessory:</label>
+        <select id="accessory">
+            <option value="100">Car Cover</option>
+            <option value="200">Floor Mats</option>
+            <option value="30">Seat Covers</option>
+            <option value="40">Phone Holder</option>
+        </select>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="1" value="1">
+        <br>
+        <button type="button" id="addButton">Add</button>
+    </form>
+
+    <table id="productList">
+        <thead>
+            <tr>
+                <th>Accessory</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="bodddy">
+            <!-- Product list items will be added here dynamically -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total Price:</td>
+                <td id="totalPrice">0</td>
+            </tr>
+        </tfoot>
+    </table>
+    <label for="vatAmount">VAT Amount:</label>
+    <span id="vatAmount">0.00</span>
+    <br>
+    <label for="netAmount">NET Amount:</label>
+    <span id="netAmount">0.00</span>
+
+    <script>
+        var totalPrice = 0;
+
+        function addToProductList() {
+            var accessorySelect = $("#accessory");
+            var accessoryOption = accessorySelect.find(":selected");
+            var accessoryName = accessoryOption.text();
+            var accessoryPrice = parseFloat(accessoryOption.val());
+            var amount = parseInt($("#amount").val());
+
+            var productList = $("#bodddy");
+            var newRow = $("<tr></tr>");
+            var accessoryCell = $("<td></td>").text(accessoryName);
+            var amountCell = $("<td></td>").text(amount);
+            var priceCell = $("<td></td>").text((accessoryPrice * amount).toFixed(2));
+
+            newRow.append(accessoryCell);
+            newRow.append(amountCell);
+            newRow.append(priceCell);
+            productList.append(newRow);
+
+            totalPrice += accessoryPrice * amount;
+            $("#totalPrice").text(totalPrice.toFixed(2));
+
+            var vatRate = 0.07;
+            var vatAmount = totalPrice * vatRate;
+            $("#vatAmount").text(vatAmount.toFixed(2));
+            var netAmount = totalPrice + vatAmount;
+            $("#netAmount").text(netAmount.toFixed(2));
+        }
+
+        $(document).ready(function () {
+            $("#addButton").on("click", addToProductList);
+        });
+    </script>
+</body>
+
+</html>
