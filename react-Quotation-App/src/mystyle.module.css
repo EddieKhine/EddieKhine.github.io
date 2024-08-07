@@ -1,0 +1,90 @@
+.appContainer {
+  padding: 20px;
+  background-color: #f8f3f3;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexColumn {
+  flex: 1;
+  margin: 10px;
+}
+
+.formColumn {
+  background-color: #000000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.formControl {
+  border-radius: 5px;
+}
+
+.addButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+}
+
+.quotationTable {
+  background-color: #040404;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableTitle {
+  font-weight: bold;
+  color: #333;
+}
+
+.clearButton {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.deleteButton {
+  border: none;
+  color: white;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.table thead th {
+  background-color: #007bff;
+  color: white;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #e9ecef;
+}
+
+.table tfoot td {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+.evenRow {
+  background-color: black;
+  color: white;
+}
+
+.oddRow {
+  background-color: rgb(165, 161, 161);
+  color: black;
+}
